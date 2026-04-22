@@ -1049,7 +1049,7 @@ function App() {
         <div style={loginCardStyle}>
           <h1
             style={{
-              fontSize: 58,
+              fontSize: "clamp(36px, 8vw, 58px)",
               marginTop: 0,
               marginBottom: 24,
               color: "#0f172a",
@@ -1106,7 +1106,7 @@ function App() {
         <div style={heroStyle}>
           <h1
             style={{
-              fontSize: 82,
+              fontSize: "clamp(34px, 8vw, 82px)",
               marginTop: 0,
               marginBottom: 14,
               color: "#ffffff",
@@ -1126,7 +1126,7 @@ function App() {
                 borderRadius: 18,
                 backgroundColor: "rgba(255,255,255,0.18)",
                 border: "1px solid rgba(255,255,255,0.22)",
-                fontSize: 36,
+                fontSize: "clamp(22px, 5vw, 36px)",
                 fontWeight: "bold",
                 color: "#ffffff",
                 boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1)",
@@ -1263,7 +1263,7 @@ function App() {
           >
             <div
               style={{
-                fontSize: 28,
+                fontSize: "clamp(22px, 4vw, 28px)",
                 fontWeight: "bold",
                 marginBottom: 16,
                 color: "#1d4ed8",
@@ -1348,7 +1348,7 @@ function App() {
         >
           <div
             style={{
-              fontSize: 28,
+              fontSize: "clamp(22px, 4vw, 28px)",
               fontWeight: "bold",
               marginBottom: 12,
               color: financeInsight.color,
@@ -1397,7 +1397,7 @@ function App() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: 24,
             marginBottom: 26,
           }}
@@ -1511,7 +1511,7 @@ function App() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: 24,
               marginBottom: 24,
             }}
@@ -1719,7 +1719,7 @@ function App() {
               ...sectionTitleStyle,
               textAlign: "center",
               marginBottom: 10,
-              fontSize: 34,
+              fontSize: "clamp(24px, 5vw, 34px)",
             }}
           >
             Répartition des dépenses par catégorie
@@ -1839,7 +1839,7 @@ function App() {
               ...sectionTitleStyle,
               textAlign: "center",
               marginBottom: 24,
-              fontSize: 34,
+              fontSize: "clamp(24px, 5vw, 34px)",
             }}
           >
             Mes comptes enregistrés
@@ -1853,7 +1853,7 @@ function App() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
                 gap: 24,
               }}
             >
@@ -1888,11 +1888,12 @@ function App() {
                       alignItems: "flex-start",
                       gap: 12,
                       marginBottom: 18,
+                      flexWrap: "wrap",
                     }}
                   >
                     <div
                       style={{
-                        fontSize: 34,
+                        fontSize: "clamp(24px, 5vw, 34px)",
                         fontWeight: "bold",
                         color: "#0f172a",
                         letterSpacing: -0.6,
@@ -1925,7 +1926,7 @@ function App() {
                     <div
                       style={{
                         fontWeight: "bold",
-                        fontSize: 34,
+                        fontSize: "clamp(24px, 5vw, 34px)",
                         marginTop: 4,
                         color: acc.currentBalance < 0 ? "#dc2626" : "#059669",
                         letterSpacing: -0.5,
@@ -2058,9 +2059,10 @@ function App() {
                                   alignItems: "center",
                                   justifyContent: "space-between",
                                   gap: 14,
+                                  flexWrap: "wrap",
                                 }}
                               >
-                                <div style={{ flex: 1 }}>
+                                <div style={{ flex: 1, minWidth: 180 }}>
                                   <div
                                     style={{
                                       display: "flex",
@@ -2120,19 +2122,21 @@ function App() {
                                   {formatCurrency(t.amount)} €
                                 </div>
 
-                                <button
-                                  onClick={() => startEditingTransaction(t)}
-                                  style={editButtonStyle}
-                                >
-                                  Modifier
-                                </button>
+                                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                                  <button
+                                    onClick={() => startEditingTransaction(t)}
+                                    style={editButtonStyle}
+                                  >
+                                    Modifier
+                                  </button>
 
-                                <button
-                                  onClick={() => deleteTransaction(t.id)}
-                                  style={deleteButtonStyle}
-                                >
-                                  Supprimer
-                                </button>
+                                  <button
+                                    onClick={() => deleteTransaction(t.id)}
+                                    style={deleteButtonStyle}
+                                  >
+                                    Supprimer
+                                  </button>
+                                </div>
                               </div>
                             )}
                           </li>
